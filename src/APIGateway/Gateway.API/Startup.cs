@@ -18,6 +18,8 @@ namespace Gateway.API
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddOcelot(Configuration);
+            services.AddReverseProxy()
+                .LoadFromConfig(Configuration.GetSection("ReverseProxy"));
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
@@ -36,6 +38,7 @@ namespace Gateway.API
             app.UseAuthorization();
 
             app.UseOcelot();
+            app.MapReverseProxy();
         }
     }
 }
