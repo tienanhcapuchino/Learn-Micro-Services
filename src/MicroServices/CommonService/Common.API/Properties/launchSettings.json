@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "http": {
+    "Common.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
