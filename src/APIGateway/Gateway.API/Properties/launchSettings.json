@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "http": {
+    "Gateway.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
