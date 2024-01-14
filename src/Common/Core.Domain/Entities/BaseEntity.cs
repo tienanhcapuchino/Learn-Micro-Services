@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Core.Domain.Entities
 {
-    public class User
+    public class BaseEntity
     {
+        public Guid Id { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }
