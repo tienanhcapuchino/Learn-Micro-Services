@@ -24,8 +24,6 @@ namespace Gateway.API
             services.AddOcelot(new ConfigurationBuilder()
                 .AddJsonFile("ocelot.json")
                 .Build());
-            services.AddReverseProxy()
-                .LoadFromConfig(Configuration.GetSection("ReverseProxy"));
             services.AddHealthChecks();
             services.AddIdentity<User, IdentityRole>(options =>
             {
@@ -79,7 +77,6 @@ namespace Gateway.API
             app.UseAuthorization();
 
             app.UseOcelot();
-            app.MapReverseProxy();
             app.MapHealthChecks("/health", new HealthCheckOptions
             {
                 ResultStatusCodes =
