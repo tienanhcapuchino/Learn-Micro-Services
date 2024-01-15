@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+﻿using Core.Domain.DataContext;
+using Core.Domain.Entities;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -8,21 +12,47 @@ namespace Gateway.API
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public Startup()
+        public Startup(IConfiguration configuration)
         {
-            this.Configuration = new ConfigurationBuilder()
-                .AddJsonFile("ocelot.json")
-                .Build();
+            this.Configuration = configuration;
         }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            services.AddOcelot(Configuration);
+            services.AddOcelot(new ConfigurationBuilder()
+                .AddJsonFile("ocelot.json")
+                .Build());
             services.AddReverseProxy()
                 .LoadFromConfig(Configuration.GetSection("ReverseProxy"));
             services.AddHealthChecks();
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.AllowedForNewUsers = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+            }).AddEntityFrameworkStores<CoreDbContext>()
+            .AddDefaultTokenProviders();
+
+            services.AddIdentityCore<User>();
+
+            services.AddCors(p => p.AddDefaultPolicy(build =>
+            {
+                build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
+
+            services.AddDbContext<CoreDbContext>(option =>
+            {
+                option.UseNpgsql(Configuration.GetConnectionString("CoreDbConnectStr"));
+            });
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
@@ -37,7 +67,10 @@ namespace Gateway.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors(build =>
+            {
+                build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
