@@ -30,6 +30,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Common\Core.Domain\Core.Domain.csproj" />
+		<ProjectReference Include="..\..\Common\Core.Extension\Core.Extension.csproj" />
 	</ItemGroup>
 
 </Project>
