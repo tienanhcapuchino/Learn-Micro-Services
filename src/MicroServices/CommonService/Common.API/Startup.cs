@@ -1,4 +1,6 @@
-﻿namespace Common.API
+﻿using Core.Extension.Application;
+
+namespace Common.API
 {
     public class Startup
     {
@@ -9,9 +11,12 @@
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddBasicConfigure();
+            services.AddDbContextConfigure(Configuration);
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
+            app.UseBasicConfigure(env);
         }
     }
 }
