@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Amazon.S3;
 
 namespace Core.Extension.Application
 {
@@ -70,6 +71,12 @@ namespace Core.Extension.Application
                 build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
             services.AddHealthChecks();
+            return services;
+        }
+
+        public static IServiceCollection AddAWSConfig(this IServiceCollection services, IConfiguration configuration)
+        {
+            //services.AddDefaultAWSOptions<IAmazonS3>();
             return services;
         }
 
