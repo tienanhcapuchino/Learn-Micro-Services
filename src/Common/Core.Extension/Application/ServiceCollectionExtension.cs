@@ -60,7 +60,7 @@ namespace Core.Extension.Application
             return services;
         }
 
-        public static IServiceCollection AddBasicConfigure(IServiceCollection services)
+        public static IServiceCollection AddBasicConfigure(this IServiceCollection services)
         {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
@@ -69,6 +69,7 @@ namespace Core.Extension.Application
             {
                 build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
+            services.AddHealthChecks();
             return services;
         }
 
