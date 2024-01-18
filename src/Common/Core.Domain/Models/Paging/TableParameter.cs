@@ -30,13 +30,13 @@ namespace Core.Domain.Models
     public class PageRequestOrderBy
     {
         public bool IsAscending { get; set; }
-        public string OrderByKey { get; set; }
+        public string? OrderByKey { get; set; }
     }
 
     public class PageRequestFilter
     {
-        private IEnumerable<string> _value;
-        public string ColumnName { get; set; }
+        private IEnumerable<string>? _value;
+        public string? ColumnName { get; set; }
         public bool IsNullValue { get; set; }
         public IEnumerable<string> Value
         {

@@ -10,6 +10,6 @@ namespace Core.Domain.Entities
     public class GlobalSetting : BaseEntity
     {
         public GlobalSettingType Type { get; set; }
-        public string Detail {  get; set; }
+        public required string Detail {  get; set; }
     }
 }

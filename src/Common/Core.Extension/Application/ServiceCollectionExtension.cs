@@ -30,7 +30,7 @@ namespace Core.Extension.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception($"Error when add auto mapper with error: {ex}");
             }
             return services;
         }
@@ -76,7 +76,8 @@ namespace Core.Extension.Application
 
         public static IServiceCollection AddAWSConfig(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddDefaultAWSOptions<IAmazonS3>();
+            services.AddDefaultAWSOptions(configuration.GetAWSOptions());
+            services.AddAWSService<IAmazonS3>();
             return services;
         }
 

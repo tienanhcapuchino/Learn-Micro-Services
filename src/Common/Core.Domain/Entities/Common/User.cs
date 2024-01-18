@@ -11,7 +11,7 @@ namespace Core.Domain.Entities
     public class User : IdentityUser
     {
         public DateTime DateOfBirth { get; set; }
-        public string FullName { get; set; }
+        public required string FullName { get; set; }
         public UserStatus Status { get; set; }
         public Gender Gender { get; set; }
     }
