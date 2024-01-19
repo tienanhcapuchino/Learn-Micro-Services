@@ -1,5 +1,7 @@
+using Core.Domain.Constants;
 using Gateway.API;
 
+Console.Title = ApplicationHostName.APIGateWay;
 var builder = WebApplication.CreateBuilder(args);
 var startup = new Startup(builder.Configuration); // My custom startup class.
 

@@ -1,7 +1,10 @@
+using Core.Domain.Constants;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+Console.Title = ApplicationHostName.Project;
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -1,31 +1,31 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/project-api/{controller}/{action}",
+      "DownstreamPathTemplate": "/api/{controller}/{action}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5297
+          "Port": 15002
         }
       ],
-      "UpstreamPathTemplate": "/project-gateway/{controller}/{action}",
+      "UpstreamPathTemplate": "/project/api/{controller}/{action}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
     },
     {
-      "DownstreamPathTemplate": "/common-api/{controller}/{action}",
+      "DownstreamPathTemplate": "/api/{controller}/{action}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5089
+          "Port": 15001
         }
       ],
-      "UpstreamPathTemplate": "/common-gateway/{controller}/{action}",
+      "UpstreamPathTemplate": "/common/api/{controller}/{action}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5021"
+    "BaseUrl": "http://localhost:15001"
   }
 }
