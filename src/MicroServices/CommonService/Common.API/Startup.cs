@@ -1,4 +1,6 @@
-﻿using Core.Extension.Application;
+﻿using Common.Service.Interfaces;
+using Common.Service.Services;
+using Core.Extension.Application;
 
 namespace Common.API
 {
@@ -13,6 +15,9 @@ namespace Common.API
         {
             services.AddBasicConfigure();
             services.AddDbContextConfigure(Configuration);
+            services.AddAWSConfig(Configuration);
+
+            services.AddTransient<IFileStorageService, FileStorageService>();
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {

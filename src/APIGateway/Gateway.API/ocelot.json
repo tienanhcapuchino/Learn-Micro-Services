@@ -10,7 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/project-gateway/{controller}/{action}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
     },
     {
       "DownstreamPathTemplate": "/common-api/{controller}/{action}",
@@ -22,7 +22,7 @@
         }
       ],
       "UpstreamPathTemplate": "/common-gateway/{controller}/{action}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
     }
   ],
   "GlobalConfiguration": {
