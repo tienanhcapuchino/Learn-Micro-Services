@@ -17,6 +17,7 @@ namespace Common.Service.Services
             _s3Client = s3Client;
         }
 
+        [Obsolete]
         public async Task<ResponseModel> CreateBucket(string bucketName)
         {
             try
