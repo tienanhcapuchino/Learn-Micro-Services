@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -11,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Amazon.S3;
+using Amazon.Runtime;
 
 namespace Core.Extension.Application
 {
@@ -76,7 +75,12 @@ namespace Core.Extension.Application
 
         public static IServiceCollection AddAWSConfig(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDefaultAWSOptions(configuration.GetAWSOptions());
+            var awsSetting = configuration.GetSection("AWS");
+            var awsOption = configuration.GetAWSOptions();
+            var credential = new BasicAWSCredentials(awsSetting["AccessKey"], awsSetting["SecretKey"]);
+            awsOption.Credentials = credential;
+            awsOption.Region = Amazon.RegionEndpoint.USEast1;
+            services.AddDefaultAWSOptions(awsOption);
             services.AddAWSService<IAmazonS3>();
             return services;
         }
