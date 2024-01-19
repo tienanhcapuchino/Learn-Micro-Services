@@ -14,7 +14,8 @@ namespace Common.API.Controllers
         {
             _fileStorageService = fileStorageService;
         }
-        [HttpPost("create")]
+
+        [HttpPost("create/bucket")]
         public async Task<ResponseModel> CreateBucket(string bucketName)
         {
             var result = await _fileStorageService.CreateBucket(bucketName);
