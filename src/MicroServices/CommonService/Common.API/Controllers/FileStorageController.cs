@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Common.API.Controllers
 {
-    [Route("~/common-api/[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class FileStorageController : ControllerBase
     {
