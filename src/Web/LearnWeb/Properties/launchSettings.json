@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "http": {
+    "Learn.Web": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
