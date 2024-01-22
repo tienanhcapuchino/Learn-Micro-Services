@@ -14,5 +14,7 @@ namespace Core.Domain.Entities
         public required string FullName { get; set; }
         public UserStatus Status { get; set; }
         public Gender Gender { get; set; }
+        public long CreatedDate { get; set; }
+        public long UpdatedDate { get; set;}
     }
 }
