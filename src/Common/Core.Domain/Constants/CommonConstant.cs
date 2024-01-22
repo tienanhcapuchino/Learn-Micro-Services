@@ -36,4 +36,11 @@ namespace Core.Domain.Constants
         public const string Common = "Common Service";
         public const string Project = "Project Service";
     }
+
+    public static class RegexFunction
+    {
+        public const string PhoneNumberRegex = @"^(03|05|07|08|09)[0-9]{8}$";
+        public const string EmailRegex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+    }
+
 }

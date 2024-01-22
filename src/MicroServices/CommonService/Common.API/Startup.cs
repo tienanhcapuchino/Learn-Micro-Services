@@ -1,4 +1,5 @@
-﻿using Common.Service.Interfaces;
+﻿using Common.API.AutoMapper;
+using Common.Service.Interfaces;
 using Common.Service.Services;
 using Core.Extension.Application;
 
@@ -16,8 +17,12 @@ namespace Common.API
             services.AddBasicConfigure();
             services.AddDbContextConfigure(Configuration);
             services.AddAWSConfig(Configuration);
+            services.AddAutoMapperConfig(typeof(Startup), new MappingProfile());
 
+            #region register services
             services.AddTransient<IFileStorageService, FileStorageService>();
+            services.AddTransient<IUserService, UserService>();
+            #endregion
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
