@@ -1,7 +1,9 @@
 ﻿using Common.API.AutoMapper;
 using Common.Service.Interfaces;
 using Common.Service.Services;
+using Common.Service.Services.DataUpgrade;
 using Core.Extension.Application;
+using Core.Service.Interfaces;
 
 namespace Common.API
 {
@@ -23,6 +25,11 @@ namespace Common.API
             services.AddTransient<IFileStorageService, FileStorageService>();
             services.AddTransient<IUserService, UserService>();
             #endregion
+
+            #region data upgrade services
+            services.AddScoped<IDataUpgradeService, RoleDataUpgradeService>();
+            #endregion
+
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {

@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Core.Extension.Extensions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -46,6 +48,8 @@ namespace Core.Extension.Application
                 },
                 AllowCachingResponses = true,
             });
+            var scope = app.Services.CreateScope();
+            AutoMigration.UpgradeServiceAsync(scope).Wait();
             return app;
         }
     }

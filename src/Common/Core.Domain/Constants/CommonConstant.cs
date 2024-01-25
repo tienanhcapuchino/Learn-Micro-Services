@@ -11,7 +11,7 @@ namespace Core.Domain.Constants
         public const string GlobalSettingTable = "GlobalSetting";
         public const string DepartmentTable = "Department";
     }
-    public enum MicroServiceComponent: byte
+    public enum MicroServiceComponent : byte
     {
         Common = 1,
         Project = 2
@@ -41,6 +41,15 @@ namespace Core.Domain.Constants
     {
         public const string PhoneNumberRegex = @"^(03|05|07|08|09)[0-9]{8}$";
         public const string EmailRegex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+    }
+
+    public static class RoleName
+    {
+        public const string Admin = "Admin";
+        public const string Manager = "Manager";
+        public const string Leader = "Leader";
+        public const string Employee = "Employee";
+        public static readonly List<string> UserRoles = new List<string>() { Admin, Manager, Leader, Employee };
     }
 
 }

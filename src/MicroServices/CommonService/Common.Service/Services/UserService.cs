@@ -11,15 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using Core.Domain.Utility;
+using Core.Domain.Constants;
 
 namespace Common.Service.Services
 {
     public class UserService : IUserService
     {
         private readonly UserManager<User> _userManager;
-        public UserService(UserManager<User> userManager)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public UserService(UserManager<User> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public Task<ResponseModel> Login(UserLoginModel model)
@@ -47,6 +51,14 @@ namespace Common.Service.Services
                         StatusCode = HttpStatusCode.BadRequest,
                     };
                 }
+
+                //add to user role table
+                var isExistEmployeeRole = await _roleManager.RoleExistsAsync(RoleName.Employee);
+                if (!isExistEmployeeRole)
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(RoleName.Employee));
+                }
+                await _userManager.AddToRoleAsync(model, RoleName.Employee);
                 return result;
             }
             catch (Exception ex)

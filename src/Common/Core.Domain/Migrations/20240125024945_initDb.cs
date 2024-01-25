@@ -35,6 +35,8 @@ namespace Core.Domain.Migrations
                     FullName = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<byte>(type: "smallint", nullable: false),
                     Gender = table.Column<byte>(type: "smallint", nullable: false),
+                    CreatedDate = table.Column<long>(type: "bigint", nullable: false),
+                    UpdatedDate = table.Column<long>(type: "bigint", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -62,8 +64,8 @@ namespace Core.Domain.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Type = table.Column<byte>(type: "smallint", nullable: false),
                     Detail = table.Column<string>(type: "text", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreatedDate = table.Column<long>(type: "bigint", nullable: false),
+                    UpdatedDate = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
