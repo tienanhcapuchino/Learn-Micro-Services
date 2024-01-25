@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Core.Domain.Migrations
 {
     [DbContext(typeof(CoreDbContext))]
-    [Migration("20240115140524_initDb")]
+    [Migration("20240125024945_initDb")]
     partial class initDb
     {
         /// <inheritdoc />
@@ -31,8 +31,8 @@ namespace Core.Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<long>("CreatedDate")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Detail")
                         .IsRequired()
@@ -41,8 +41,8 @@ namespace Core.Domain.Migrations
                     b.Property<byte>("Type")
                         .HasColumnType("smallint");
 
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<long>("UpdatedDate")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -62,6 +62,9 @@ namespace Core.Domain.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
+
+                    b.Property<long>("CreatedDate")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("timestamp with time zone");
@@ -111,6 +114,9 @@ namespace Core.Domain.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
+
+                    b.Property<long>("UpdatedDate")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
