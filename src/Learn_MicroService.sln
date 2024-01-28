@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectService", "ProjectSe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{A6794BA5-7038-4F0B-A3D5-B72495A95117}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnWeb", "Web\LearnWeb\LearnWeb.csproj", "{3A96AB54-A058-4B94-AF08-2AA87D3879C7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonService", "CommonService", "{08038952-6769-4D74-821F-C93E869ED24E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.API", "APIGateway\Gateway.API\Gateway.API.csproj", "{3AE18670-C86C-4E1C-8111-CE15A8060156}"
@@ -27,11 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.API", "MicroServices
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Service", "Common\Core.Service\Core.Service.csproj", "{D44F8B53-0C1A-4C22-9DC9-FE5B84513B23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Service", "MicroServices\CommonService\Common.Service\Common.Service.csproj", "{00315B94-185D-407E-B7B1-BC51ED8970C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Service", "MicroServices\CommonService\Common.Service\Common.Service.csproj", "{00315B94-185D-407E-B7B1-BC51ED8970C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Domain", "MicroServices\CommonService\Common.Domain\Common.Domain.csproj", "{5219293D-A87D-4777-9240-A9B620B679D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Domain", "MicroServices\CommonService\Common.Domain\Common.Domain.csproj", "{5219293D-A87D-4777-9240-A9B620B679D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Extension", "Common\Core.Extension\Core.Extension.csproj", "{C2E7F8C2-3CDF-4184-99D8-08B02F979449}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Extension", "Common\Core.Extension\Core.Extension.csproj", "{C2E7F8C2-3CDF-4184-99D8-08B02F979449}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "learnweb.client", "Web\LearnWeb\learnweb.client\learnweb.client.esproj", "{4DD22578-990C-4A73-9E03-023268650915}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,6 @@ Global
 		{00786937-1CA5-485E-A0EB-DB18BD7398DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00786937-1CA5-485E-A0EB-DB18BD7398DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00786937-1CA5-485E-A0EB-DB18BD7398DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A96AB54-A058-4B94-AF08-2AA87D3879C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A96AB54-A058-4B94-AF08-2AA87D3879C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A96AB54-A058-4B94-AF08-2AA87D3879C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A96AB54-A058-4B94-AF08-2AA87D3879C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AE18670-C86C-4E1C-8111-CE15A8060156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AE18670-C86C-4E1C-8111-CE15A8060156}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AE18670-C86C-4E1C-8111-CE15A8060156}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,6 +71,12 @@ Global
 		{C2E7F8C2-3CDF-4184-99D8-08B02F979449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E7F8C2-3CDF-4184-99D8-08B02F979449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E7F8C2-3CDF-4184-99D8-08B02F979449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD22578-990C-4A73-9E03-023268650915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD22578-990C-4A73-9E03-023268650915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD22578-990C-4A73-9E03-023268650915}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4DD22578-990C-4A73-9E03-023268650915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD22578-990C-4A73-9E03-023268650915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD22578-990C-4A73-9E03-023268650915}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,7 +84,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{00786937-1CA5-485E-A0EB-DB18BD7398DF} = {923997F3-B5E6-489D-B2B7-BF684A365BE1}
 		{2AF593CD-CEE8-4BAF-BAC0-78BC40387081} = {46359C6A-2D91-4F16-8AF0-8FAEC921DE70}
-		{3A96AB54-A058-4B94-AF08-2AA87D3879C7} = {A6794BA5-7038-4F0B-A3D5-B72495A95117}
 		{08038952-6769-4D74-821F-C93E869ED24E} = {46359C6A-2D91-4F16-8AF0-8FAEC921DE70}
 		{3AE18670-C86C-4E1C-8111-CE15A8060156} = {DF580EC7-0532-4048-9F2C-5097137B7CD1}
 		{7CACF84A-8978-405D-A903-A692003864B0} = {2AF593CD-CEE8-4BAF-BAC0-78BC40387081}
