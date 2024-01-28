@@ -1,4 +1,5 @@
-﻿using Core.Domain.DataContext;
+﻿using Core.Domain.Constants;
+using Core.Domain.DataContext;
 using Core.Domain.Entities;
 using Core.Extension.Application;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -27,7 +28,7 @@ namespace Gateway.API
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
-            app.UseBasicConfigure(env);
+            app.UseBasicConfigure(env, MicroServiceComponent.Gateway);
 
             app.UseOcelot();
             

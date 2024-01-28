@@ -13,6 +13,7 @@ namespace Core.Domain.Constants
     }
     public enum MicroServiceComponent : byte
     {
+        Gateway = 0,
         Common = 1,
         Project = 2
     }
@@ -50,6 +51,13 @@ namespace Core.Domain.Constants
         public const string Leader = "Leader";
         public const string Employee = "Employee";
         public static readonly List<string> UserRoles = new List<string>() { Admin, Manager, Leader, Employee };
+    }
+
+    public static class APIName
+    {
+        public const string Gateway = "Gateway API";
+        public const string Common = "Common API";
+        public const string Project = "Project API";
     }
 
 }
