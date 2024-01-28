@@ -1,4 +1,5 @@
-﻿using Core.Extension.Application;
+﻿using Core.Domain.Constants;
+using Core.Extension.Application;
 
 namespace Project.API
 {
@@ -17,7 +18,7 @@ namespace Project.API
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
-            app.UseBasicConfigure(env);
+            app.UseBasicConfigure(env, MicroServiceComponent.Project);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Domain.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,26 @@ namespace Core.Domain.Utility
             password[random.Next(0, length)] = (char)('0' + randomNumber);
 
             return password.ToString();
+        }
+
+        public static string GetAPINameByComponent(MicroServiceComponent component)
+        {
+            string result = "";
+            switch (component)
+            {
+                case MicroServiceComponent.Gateway:
+                    result = APIName.Gateway;
+                    break;
+                case MicroServiceComponent.Common:
+                    result = APIName.Common;
+                    break;
+                case MicroServiceComponent.Project:
+                    result = APIName.Project;
+                    break;
+                default:
+                    break;
+            }
+            return result;
         }
     }
 }

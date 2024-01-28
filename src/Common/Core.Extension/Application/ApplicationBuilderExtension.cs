@@ -1,4 +1,6 @@
-﻿using Core.Extension.Extensions;
+﻿using Core.Domain.Constants;
+using Core.Domain.Utility;
+using Core.Extension.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -14,7 +16,7 @@ namespace Core.Extension.Application
 {
     public static class ApplicationBuilderExtension
     {
-        public static IApplicationBuilder UseBasicConfigure(this WebApplication app, IWebHostEnvironment env)
+        public static IApplicationBuilder UseBasicConfigure(this WebApplication app, IWebHostEnvironment env, MicroServiceComponent component)
         {
             if (!env.IsDevelopment())
             {
@@ -25,7 +27,10 @@ namespace Core.Extension.Application
             else
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", CommonUtility.GetAPINameByComponent(component));
+                });
             }
             app.UseCors(build =>
             {
